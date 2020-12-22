@@ -1,48 +1,72 @@
-//str = " .João Paulo é.";
-//resultado = str.normalize('NFD').trim().replace(/[\u0300-\u036f]/g, "", " ","");
+// VARIAVEIS GLOBAIS
+// VARIAVEIS GLOBAIS nome
+var campo_nome = document.querySelector("input[name='nome']");
+var botao_adicionar = document.querySelector("#adicionar_dados");
+var corpo = document.querySelector("tbody");
 
-//console.log(resultado);
+// VARIAVEIS GLOBAIS number
+var campo_number = document.querySelector("input[name='number']");
+var botao_number = document.querySelector("#adicionar_number");
+var corpo_number = document.querySelector("tbody[id='tbody_number']");
 
-//Variaveis Globais
-    var botao_adicionar = document.querySelector("#adicionar_dados");
-    var campo_nome = document.querySelector("input[name='nome']");
-    var corpo = document.querySelector("tbody");
+// LISTENER VARIAVEIS GLOBAIS
+botao_adicionar.addEventListener('click', adicionar_dados);
+botao_number.addEventListener('click', adicionar_number);
+console.log("entrei aqui")
 
-//Objetos
-function Entrevista(nome) {
-    this.nome = nome.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); 
-    this.nome = nome.replace(/[^\w\-]+/g, ' '); 
-    this.nome - nome.trim();
-    this.mostrar_dados = function() {
-        console.log(this.nome)
-    }
-    this.criar_linha = function() {
-        //criar elementos
-        var linha = document.createElement("tr")
-        var campo_nome = document.createElement("tb")
-
-        // Cria Nós
-        var texto_nome = document.createTextNode(this.nome);
-        //Vincluar os nós aos elementos
-        campo_nome.appendChild(texto_nome);
-        linha.appendChild(campo_nome);
-
-        corpo.appendChild(linha);
-
-    }
-
-};
-
-
-//Funções
+// FUNÇÕES
 function adicionar_dados(event) {
+    console.log("entrei no adicionar")
     event.preventDefault();
-    var nome = campo_nome.value;
-    nova_entrevista = new Entrevista(campo_nome.value);
-    nova_entrevista.criar_linha();
-} 
+    limpar_dados(campo_nome.value);
+    criar_linha();
+    limpar_inputs()
+}
 
+function limpar_dados(nome) {
+    console.log("entrei no limpar");
+    this.nome = nome.normalize('NFD').replace(/[\u0300-\u036f]|[^a-zA-Z ]/g, "");
+}
 
+function criar_linha() {
+    console.log("entrei no criar")
 
-//Rotina Principal
-botao_adicionar.addEventListener('click', adicionar_dados); 
+    //criar elementos
+    var linha = document.createElement("tr")
+    var campo_nome = document.createElement("tb")
+
+    // Cria Nós
+    var texto_nome = document.createTextNode(this.nome)
+    //Vincluar os nós aos elementos
+    campo_nome.appendChild(texto_nome)
+    linha.appendChild(campo_nome)
+    corpo.appendChild(linha)
+}
+
+function adicionar_number(event) {
+    console.log("entrei no adicionar number")
+    event.preventDefault();
+    mostrar_number(campo_number.value);
+    criar_linha_number();
+    limpar_inputs()
+}
+
+function mostrar_number(number) {
+    this.number = number; 
+}
+
+function criar_linha_number() {
+    var linha_number = document.createElement("tr")
+    var campo_number = document.createElement("tb")
+
+    var texto_number = document.createTextNode(this.number)
+    console.log("number" + texto_number)
+    campo_number.appendChild(texto_number)
+    linha_number.appendChild(campo_number)
+    corpo_number.appendChild(linha_number)
+}
+
+function limpar_inputs() {
+    campo_nome.value = "";
+    campo_number.value = "";
+}

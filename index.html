@@ -6,21 +6,38 @@
 </head>
 <body>
   <form action="">
-    <input type="text" name="nome" placeholder="Digite aqui...">
+    <label for="name">Palavra sem caracter especial: </label>
+    <input type="text" name="nome" placeholder="Digite aqui..." id="myText">
     <button id="adicionar_dados">Adicionar</button>  
   </form>
   <div class="alerta"></div>
-  <hr>
+  <p></p>
     <table>
       <thead>
         <tr>
-          <th>Descrição</th>
+          <th>Palavras digitadas</th>
         </tr>
       </thead>
-      <tbody>
-        
-      </tbody>
+      <tbody></tbody>
     </table>
-  <script src="js/test.js"></script>
+    <p></p>
+    <hr>
+    <form action="">
+      <label for="number">Digite números: </label>
+    <input required="required" type="number" name="number" placeholder="Digite numeros" id="myNumber">
+    <button id="adicionar_number">Adicionar</button>  
+  </form>
+  <div class="alerta1"></div>
+  <p></p>
+  <table>
+      <thead>
+        <tr>
+          <th>Numeros digitados</th>
+        </tr>
+      </thead>
+      <tbody id="tbody_number"></tbody>
+    </table>
+  <script src="js/test.js" type="text/javascript"></script>
 </body>
 </html>
+
